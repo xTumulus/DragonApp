@@ -1,0 +1,13 @@
+<div class="modal-content" fxLayout="row" fxLayoutAlign="space-between center">
+	<div class="modal-text">
+		<h3 class="title">Notes</h3>
+		<div *ngIf="!editing" class="display-text">
+			<p>{{dragonNotes}}</p>
+		</div>
+		<div *ngIf="editing" class="edit-text" fxLayout="column" fxLayoutAlign="space-between center">
+			<textarea [(ngModel)]="dragonNotes"></textarea>
+			<button class="primary save-btn" (click)="saveNoteChanges()">Save</button>
+		</div>
+	</div>
+	<button class="edit-btn" (click)="editNote()"><i class="material-icons">mode_edit</i></button>
+</div>	

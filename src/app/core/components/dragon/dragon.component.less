@@ -1,0 +1,40 @@
+@import '../../../../variables.less';
+
+.dragon-container {
+	align-items: center;
+	margin-bottom: 10px;
+
+	input {
+		// TODO Line inputs up with other values on edit
+		border-radius: 3px;
+	}
+
+	.dragon-image-container {
+		border: none;
+		
+		.dragon-image {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+		}
+	}
+	
+	.dragon-notes {
+		position: relative;
+		.notes-modal {
+			padding: 15px;
+			background-color: @app-white;
+			border: 1px solid @app-grey;
+			display: none;
+
+			&.open {
+				display: block;
+				position: absolute;
+				top: 10px;
+				right: -100px;
+				z-index: 1;
+			}
+		}
+	}
+}
+

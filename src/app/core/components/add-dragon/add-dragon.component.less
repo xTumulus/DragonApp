@@ -1,0 +1,40 @@
+@import '../../../../variables.less';
+
+.card-container {
+    background-color: @app-white;
+    width: 75%;
+    padding: 5px 0px 20px 25px;
+    margin: -45px 13% 30px 12%;
+    border-radius: 2px;
+    box-shadow: 0px 0px 20px -6px black; 
+
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	
+	.checkbox-field {
+		width: 150px;
+		margin: 10px 0px 0px 0px; 
+	}
+	
+	.button-container {
+		margin: 40px 0px 0px 0px;
+		width: 200px;
+	}
+}
+
+::ng-deep.mat-radio-group {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	color: @app-grey;
+}
+
+::ng-deep.mat-radio-label {
+	flex-direction: column-reverse;
+	margin: 0px 5px;
+}
+
+::ng-deep.mat-radio-label-content {
+	margin-left: -8px;
+}

@@ -1,0 +1,32 @@
+<div class="header" fxLayout="column">
+	<div fxLayout="row" fxFlexAlign="center">
+		<select class="search-filter" name="filterType" [(ngModel)]="filterType">
+			<option *ngFor="let filter of listFilters" [value]="filter.value">
+				{{ filter.displayValue }}
+			<option>
+		</select>
+		<input class="search-bar" fxFlex="620px" placeholder="Search" [(ngModel)]="filterQuery" (keyup)="filterDragons()">
+		<button class="primary search-btn"><i class="material-icons">search</i></button>
+		<button class="primary battle-btn" [routerLink]="['/dragons/battle']">Battle</button>
+	</div>
+	<div class="page-title" fxLayout="row">
+		<button class="add-btn primary" [routerLink]="['/dragons/add']">+</button>
+		<h1>List of Dragons</h1>
+	</div>
+</div>
+<div class="dragon-table" fxLayout="column">
+	<div class="table-header" fxFlex="50%">
+		<div class="dragon-image header-cell" fxFlex="8%"></div>
+		<div class="dragon-name header-cell" fxFlex="16%">Name</div>
+		<div class="dragon-color header-cell" fxFlex="15%">Color</div>
+		<div class="dragon-type header-cell" fxFlex="15%">Type</div>
+		<div class="dragon-power header-cell" fxFlex="10%">Power</div>
+		<div class="dragon-wings header-cell" fxFlex="10%">Wings</div>
+		<div class="dragon-notes header-cell" fxFlex="10%">Notes</div>
+		<div class="dragon-owner header-cell" fxFlex="12%">Owner</div>
+		<div class="edit header-cell" fxFlex="4%"></div>
+	</div>
+	<div class="dragon" *ngFor="let dragon of displayDragons" fxFlex="50%">
+		<app-dragon [dragonInfo]="dragon"></app-dragon>
+	</div>
+</div>

@@ -1,0 +1,49 @@
+<div class="dragon-container" fxLayout="row" *ngIf="!editing">
+	<div class="dragon-image-container" fxFlex="8%">
+		<img class="dragon-image" [src]="dragonInfo.imageUrl">
+	</div>
+	<div class="dragon-name" fxFlex="16%">{{dragonInfo.name}}</div>
+	<div class="dragon-color" fxFlex="15%">{{dragonInfo.color}}</div>
+	<div class="dragon-type" fxFlex="15%">{{dragonInfo.type}}</div>
+	<div class="dragon-power" fxFlex="10%">{{dragonInfo.powerLevel}}</div>
+	<div class="dragon-wings" fxFlex="10%">{{dragonInfo.hasWings? 'Yes':'No'}}</div>
+	<div class="dragon-notes" fxFlex="10%">
+		<i class="material-icons" (click)="modalIsOpen = true">description</i>
+		<div class="notes-modal" [class.open] = "modalIsOpen" (clickOutside)="modalIsOpen = false">
+			<app-notes-modal [dragonNotes]="dragonInfo.notes" (updateDragonNotes)="updateNotes($event)"></app-notes-modal>
+		</div>
+	</div>
+	<div class="dragon-owner" fxFlex="12%">{{dragonInfo.owner}}</div>
+	<div class="edit" fxFlex="4%">
+		<i class="material-icons" [matMenuTriggerFor]="editOptions">more_vert</i>
+		<mat-menu #editOptions="matMenu">
+			<button mat-menu-item (click)="editing=true" fxLayout="row" fxLayoutAlign="space-between center">
+				<span>Edit</span>
+				<i class="material-icons">description</i>		
+			</button>
+			<button mat-menu-item (click)="openDeleteDragonDialog()" fxLayout="row" fxLayoutAlign="space-between center">
+				<span>Delete</span>
+				<i class="material-icons">delete</i>		
+			</button>
+		</mat-menu>
+	</div>
+</div>
+<div class="dragon-container edit-dragon" fxLayout="row" *ngIf="editing" fxLayoutGap="20px">
+	<div class="dragon-image-container" fxFlex="8%">
+		<img class="dragon-image" [src]="dragonInfo.imageUrl">
+	</div>
+	<input class="dragon-name" fxFlex="16%" [(ngModel)]="dragonInfo.name" [placeholder]="dragonInfo.name">
+	<input class="dragon-color" fxFlex="15%" [(ngModel)]="dragonInfo.color" [placeholder]="dragonInfo.color">
+	<input class="dragon-type" fxFlex="15%" [(ngModel)]="dragonInfo.type" [placeholder]="dragonInfo.type">
+	<input class="dragon-power" fxFlex="10%" [(ngModel)]="dragonInfo.power" [placeholder]="dragonInfo.powerLevel">
+	<input class="dragon-wings" fxFlex="10%" [(ngModel)]="dragonInfo.wings" [placeholder]="dragonInfo.hasWings ? 'Yes':'No'">
+	<div class="dragon-notes" fxFlex="10%">
+		<i class="material-icons" (click)="modalIsOpen = true">description</i>
+		<div class="notes-modal" [class.open] = "modalIsOpen" (clickOutside)="modalIsOpen = false">
+			<app-notes-modal [dragonNotes]="dragonInfo.notes" (updateDragonNotes)="updateNotes($event)"></app-notes-modal>
+		</div>
+	</div>
+	<input class="dragon-owner" fxFlex="12%" [(ngModel)]="dragonInfo.owner" [placeholder]="dragonInfo.owner">		
+	<button class="primary save-btn" fxFlex="4%" (click)="updateDragon()">Save</button>
+</div>
+	

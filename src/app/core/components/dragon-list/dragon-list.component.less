@@ -1,0 +1,73 @@
+@import '../../../../variables.less';
+
+:host {
+	width: 75%;
+	height: 100vh;
+}
+
+h1 {
+	color: @app-white;
+	font-weight: normal;
+}
+
+.header {
+	width: 100%;
+	margin-top: -125px; 
+	position: absolute;
+	
+	.search-filter {
+		width: 75px;
+		background-color: @app-light-grey;
+		border: none;
+	}
+	
+	.search-btn {
+		height: 30px;
+		width: 40px;
+		border-radius: none;
+	}
+	
+	.battle-btn {
+		position: fixed;
+		right: 100px;
+	}
+	
+	.page-title {
+		margin-top: 0;
+		position: fixed;
+		left: 20%;
+		top: 100px;
+		
+		h1 {
+			margin-left: 30px;
+		}
+		
+		.add-btn {
+			font-size: 45px;
+			margin-top: 40px;
+			width: 75px;
+			height: 75px;
+			border-radius: 50%;
+		}
+	}
+}
+
+.dragon-table {
+	padding: 50px;	
+	margin-left: 25%;
+	margin-right: 25%;
+	
+	.table-header {
+		margin-bottom: 20px;
+		
+		.header-cell {
+			font-weight: 575;
+			padding-bottom: 20px;
+			border-bottom: 1px solid @app-grey;	
+			
+			&.dragon-image {
+				border: none;
+			}
+		}
+	}
+}

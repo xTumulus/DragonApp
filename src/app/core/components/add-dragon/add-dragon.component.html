@@ -1,0 +1,71 @@
+<div class="card-container">
+	<h1>Create New Dragon</h1>
+	
+	<form [formGroup]="dragonForm" class="dragon-form" (ngSubmit)="createDragon()" fxLayout="column">
+		<mat-form-field>
+			<label><h3>Dragon's Name</h3></label>
+			<input matInput formControlName="name">
+			<mat-error>
+				<span *ngIf="dragonForm?.controls.name?.errors?.required">Required Field</span>
+			</mat-error>
+		</mat-form-field>
+		
+		<mat-form-field>        
+			<label><h3>Dragon's Color</h3></label>
+			<input matInput formControlName="color">
+			<mat-error>
+				<span *ngIf="dragonForm?.controls.color?.errors?.required">Required Field</span>
+			</mat-error>	
+		</mat-form-field>
+		
+		<mat-form-field>
+			<label><h3>Dragon's Type</h3></label>
+			<input matInput formControlName="type" [matAutocomplete]="availableTypes">
+			<mat-error>
+				<span *ngIf="dragonForm?.controls.type?.errors?.required">Required Field</span>
+			</mat-error>	
+		</mat-form-field>
+		<mat-autocomplete #availableTypes="matAutocomplete">
+			<mat-option *ngFor="let type of dragonTypes" [value]="type">
+				{{ type }}
+			</mat-option>
+		</mat-autocomplete>
+	
+		<label><h3>Dragon's Power</h3></label>
+		<mat-radio-group formControlName="powerLevel">
+			<p>Weak</p>		
+			<mat-radio-button *ngFor="let power of powerValues" value="power">{{power}}</mat-radio-button>
+			<p>Strong</p>
+			<mat-error>
+				<span *ngIf="dragonForm?.controls.power?.errors?.required">Required Field</span>
+			</mat-error>
+		</mat-radio-group>
+		
+		<div class="checkbox-field" fxLayout="row" fxLayoutAlign="space-between center">
+			<label><h3>Dragon Has Wings</h3></label>
+			<mat-checkbox formControlName="hasWings"></mat-checkbox>
+		</div>
+	
+		<mat-form-field>
+			<label><h3>Other Notes</h3></label>
+			<input matInput formControlName="notes">
+		</mat-form-field>
+	
+		<mat-form-field>
+			<label><h3>Image URL</h3></label>
+			<input matInput formControlName="imageURL" type="url">
+			<mat-error>
+				<span *ngIf="dragonForm?.controls.imageURL?.errors?.required">Required Field</span>
+			</mat-error>	 
+		</mat-form-field>
+	
+		<label><h3>Dragon Owner</h3></label>
+		({{this.loggedInUser}})
+	
+		<div class="button-container" fxLayout="row" fxLayoutAlign="space-between">
+			<button mat-button class="primary" type="submit">Create</button>
+			<button mat-button class="secondary" type="button" [routerLink]="['/dragons']">Cancel</button>
+		</div>
+		
+	</form>
+</div>
